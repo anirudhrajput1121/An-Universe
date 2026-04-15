@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AN Universe | Stream Movies</title>
+    <style>
+        :root {
+            --bg-color: #0f0f12;
+            --card-bg: #1a1a20;
+            --gradient-primary: linear-gradient(90deg, #a855f7, #ec4899);
+            --neon-purple: #bf5af2;
+            --text-main: #ffffff;
+            --text-dim: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: rgba(15, 15, 18, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #2d2d35;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        /* --- Categories --- */
+        .categories {
+            display: flex;
+            gap: 12px;
+            padding: 20px 5%;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .cat-btn {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid #333;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .cat-btn:hover, .cat-btn.active {
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 10px rgba(191, 90, 242, 0.3);
+        }
+
+        /* --- Movie Grid --- */
+        .container {
+            padding: 0 5% 40px;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 25px;
+        }
+
+        .movie-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .poster-container {
+            position: relative;
+            aspect-ratio: 2/3;
+            background: #25252b;
+        }
+
+        .poster-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .quality-tag {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--gradient-primary);
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .movie-info {
+            padding: 12px;
+        }
+
+        .movie-info h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .movie-info p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* --- Footer/Links --- */
+        .view-more-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .view-more {
+            color: var(--neon-purple);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .view-more:hover {
+            border-bottom-color: var(--neon-purple);
+        }
+
+        /* --- Floating Button --- */
+        .float-contact {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gradient-primary);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+            cursor: pointer;
+            font-size: 1.5rem;
+            border: none;
+            color: white;
+            z-index: 1001;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .movie-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">AN Universe</div>
+        <div class="nav-links" style="color: var(--text-dim); font-size: 0.9rem;">Menu</div>
+    </nav>
+
+    <div class="categories">
+        <button class="cat-btn active">Featured</button>
+        <button class="cat-btn">Most Favorite</button>
+        <button class="cat-btn">Top IMDb</button>
+        <button class="cat-btn">Action</button>
+        <button class="cat-btn">Sci-Fi</button>
+    </div>
+
+    <main class="container">
+        <div class="movie-grid">
+            <div class="movie-card">
+                <div class="poster-container">
+                    <span class="quality-tag">WebRip</span>
+                    <img src="https://via.placeholder.com/300x450/25252b/ffffff?text=Poster+1" alt="Movie Poster">
+                </div>
+                <div class="movie-info">
+                    <h3>Interstellar</h3>
+                    <p>A team of explorers travel through a wormhole in space.</p>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <div class="poster-container">
+                    <span class="quality-tag">BluRay</span>
+                    <img src="https://via.placeholder.com/300x450/25252b/ffffff?text=Poster+2" alt="Movie Poster">
+                </div>
+                <div class="movie-info">
+                    <h3>The Dark Knight</h3>
+                    <p>When the menace known as the Joker wreaks havoc on Gotham.</p>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <div class="poster-container">
+                    <span class="quality-tag">HDTC</span>
+                    <img src="https://via.placeholder.com/300x450/25252b/ffffff?text=Poster+3" alt="Movie Poster">
+                </div>
+                <div class="movie-info">
+                    <h3>Inception</h3>
+                    <p>A thief who steals corporate secrets through the use of dream-sharing.</p>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <div class="poster-container">
+                    <span class="quality-tag">WebRip</span>
+                    <img src="https://via.placeholder.com/300x450/25252b/ffffff?text=Poster+4" alt="Movie Poster">
+                </div>
+                <div class="movie-info">
+                    <h3>Avatar</h3>
+                    <p>A paraplegic Marine dispatched to the moon Pandora.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="view-more-container">
+            <a href="#" class="view-more">View More Movies &rarr;</a>
+        </div>
+    </main>
+
+    <button class="float-contact" title="Contact Us">
+        💬
+    </button>
+
+</body>
+</html>
